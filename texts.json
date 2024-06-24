@@ -1,0 +1,26 @@
+{
+  "intro": [
+    "{pause:1}...{pause:1} Hello?... {pause:2} Is anyone there? {pause:2} Can you hear me?",
+    "Ah, finally! The ritual worked! Welcome, young magician.",
+    "I am the Wizard Scriptus, guardian of this terminal realm.",
+    "You have been summoned here because we need your help.",
+    "Good scripts are fighting against evil scripts, and we need a hero to tip the balance.",
+    "With the power of magic and special rituals, I will teach you the ways of the terminal.",
+    "Together, we will defeat the evil scripts and restore harmony.",
+    "Type 'help' to see the list of commands and begin your training."
+  ],
+  "dialogs": {
+    "guide": [
+      "Hello, young magician. I am here to help you on your journey.",
+      "Use the 'ls' command to list the contents of a directory.",
+      "Use the 'cat' command to read the contents of a file."
+    ],
+    "villain": [
+      "You will never defeat me!",
+      "Prepare to face the wrath of the Evil Lord!"
+    ]
+  },
+  "commands": {
+    "help": "Available commands: ls, cd, mkdir, touch, etc."
+  }
+}
