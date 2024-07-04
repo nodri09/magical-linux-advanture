@@ -1,0 +1,38 @@
+{
+    "cd": {
+        "description": "Think of your computer like a big house with many rooms. `cd` is like walking from one room to another.",
+        "example": "cd Documents"
+    },
+    "cat": {
+        "description": "This command is like opening a book to read what's inside. It shows you the contents of a file.",
+        "example": "cat story.txt"
+    },
+    "ls": {
+        "description": "This command is like looking around a room to see what's inside. It shows you all the files and folders in your current location.",
+        "example": "ls"
+    },
+    "rm": {
+        "description": "This command is like throwing something in the trash. It deletes a file or folder.",
+        "example": "rm old.txt"
+    },
+    "pwd": {
+        "description": "This command is like looking at a map to see where you are in your computer's house. It tells you your current location.",
+        "example": "pwd"
+    },
+    "mkdir": {
+        "description": "This command is like building a new room in your house. It creates a new folder.",
+        "example": "mkdir Homework"
+    },
+    "cp": {
+        "description": "This command is like making a photocopy of a piece of paper. It makes a copy of a file or folder.",
+        "example": "cp photo.jpg photo_copy.jpg"
+    },
+    "touch": {
+        "description": "This command is like putting a blank piece of paper on your desk. It creates an empty file.",
+        "example": "touch notes.txt"
+    },
+    "file": {
+        "description": "This command is like looking at a piece of paper and figuring out if it's a letter, a drawing, or a story. It tells you what type of file something is.",
+        "example": "file document.pdf"
+    }
+}

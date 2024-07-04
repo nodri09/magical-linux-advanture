@@ -10,6 +10,7 @@ class GameWindow(QWidget):
         super().__init__()
         self.texts = load_texts()  # Load game texts from external source
         self.logic = GameLogic()  # Initialize game logic
+        self.status = self.logic.check_player_status()
         self.typing_index = 0  # Current index for typing animation
         self.current_text = ""  # Text to be typed out
         self.typing_timer = QTimer(self)  # Timer for typing effect
@@ -91,7 +92,7 @@ class GameWindow(QWidget):
 
     def start_game(self):
         self.typing_index = 0  # Reset typing index
-        self.current_text = "\n".join(self.texts["intro"])  # Load intro text
+        self.current_text = "\n".join(self.texts["chapter 1"]["stage 1"]["chp 1"])  # Load intro text
         self.story_text.clear()  # Clear the story text area
         self.command_input.setDisabled(True)  # Disable input until typing is done
         self.typing_timer.start(50)  # Start typing timer with 50ms interval
@@ -127,29 +128,30 @@ class GameWindow(QWidget):
 
     def execute_command(self):
         command = self.command_input.text().strip()  # Get and trim user input
-        self.story_text.append(f'\n>>> {command}')  # Display user command in story text area
+        self.story_text.append(f'\n<span style="color:cyan;">>>> {command}</span>')  # Display user command in story text area with different color
 
         result = self.logic.handle_command(command)  # Process command using game logic
         self.show_dialog_text(result)  # Display result
         
         self.command_input.clear()  # Clear input field
-    
+        self.check_game_status()  # Check game status after command
+
+    def check_game_status(self):
+        player_status = self.logic.check_game_status(self)  # Get the current game status message
+        self.show_dialog_text(player_status)  # Display the game status message
+
     def handle_conversation(self, message):
         message = message.lower()  # Convert message to lowercase
         # Predefined responses for conversation
         responses = {
             'hi': 'Hello, young magician!',
             'hello': 'Greetings! How can I assist you on your journey?',
-            'buy': 'Farewell! Until next time.',
+            'bye': 'Farewell! Until next time.',
         }
         response = responses.get(message, "I'm not sure how to respond to that.")  # Get response or default message
         self.show_dialog_text(response)  # Display response
 
-    def show_dialog(self, character):
-        self.typing_index = 0  # Reset typing index
-        self.current_text = "\n".join(self.texts["dialogs"][character])  # Load dialog text for character
-        self.story_text.append("\n")  # Add a newline for formatting
-        self.typing_timer.start(50)  # Start typing timer
+
 
     def show_dialog_text(self, text):
         self.typing_index = 0  # Reset typing index

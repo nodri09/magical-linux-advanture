@@ -1,0 +1,26 @@
+{
+    "Lenny": {
+        "name": "Lenny the Librarian",
+        "role": "Keeper of Knowledge",
+        "appearance": "Lenny is a wise, elderly figure with round spectacles perched on the bridge of his nose. He wears a cozy cardigan and always carries a large book titled 'Linux Lore.' His hair is a mix of grey and white, neatly combed, and he has a warm, inviting smile.",
+        "background": "Lenny has been the librarian of the grand library in the /lib directory for as long as anyone can remember. His vast knowledge of Linux commands and system structures is unmatched. He is always eager to share his wisdom with those who seek it and believes that knowledge should be freely accessible to all.",
+        "personality": "Lenny is patient, kind, and incredibly intelligent. He has a knack for explaining complex concepts in a simple and understandable way. His gentle demeanor makes him approachable, and he is always ready to assist with a smile.",
+        "unique_skills": {
+            "Command Mastery": "Lenny can teach and explain any Linux command with ease",
+            "Wisdom of the Ancients": "He knows the history and evolution of the Linux operating system and can provide valuable insights.",
+            "Resourceful Guide": "Lenny can help players navigate through the /lib directory, providing hints and tips on where to find essential files and information."
+        }
+    },
+    "Kornel": {
+        "name": "Kornel the Conqueror",
+        "role": "System Overlord",
+        "appearance": "Kornel is a menacing figure, clad in dark, metallic armor adorned with sharp edges and glowing red lines. His eyes are a piercing red, and his presence exudes an aura of intimidation. He wields the 'Root Blade,' a weapon feared by many, and his armor bears the scars of countless battles.",
+        "background": "Kornel rules the /bin directory with an iron fist. He has accumulated power and knowledge through ruthless efficiency and an unyielding desire for control. Kornel's mastery over Linux commands is unparalleled, but he uses this power to dominate and subjugate those who oppose him. His goal is to maintain absolute control over the system, preventing anyone from challenging his authority.",
+        "personality": "Kornel is ruthless, cunning, and highly intelligent. He has little regard for those who do not meet his standards and views mistakes as weaknesses. His primary motivation is to maintain order and power, often through fear and intimidation. Kornel enjoys testing the limits of those who dare to challenge him, deriving satisfaction from their struggles.",
+        "unique_skills": {
+            "Command Domination": "Kornel uses his extensive knowledge of Linux commands to create complex obstacles and traps for players.",
+            "System Manipulation": "He can alter and control system processes, making it difficult for players to progress without overcoming his challenges.",
+            "Intimidation and Control": "Kornel's presence alone can unsettle players, and his actions often force them to think critically and act quickly."
+        }
+    }
+}
