@@ -1,4 +1,5 @@
 import json
+from functions import print_tf
 
 class Player:
     def __init__(self) -> None:
@@ -21,8 +22,9 @@ class Player:
                 player_data = json.load(file)
             self._load_from_dict(player_data)
         except (FileNotFoundError, json.JSONDecodeError) as e:
-            print(f"Error loading player data: {e}")
+            print_tf(f"Error loading player data: {e}", delay=0.01)
             player_data = self.create_player()
+            print_tf(f"Player created", delay=0.01)
         return player_data
 
     def create_player(self):
@@ -60,6 +62,11 @@ class Player:
                     player_data.update({k:j})
 
         self._save_to_file(player_data)
+
+    # def status(self):
+    #     status = f'{self.current_level} {self.current_chapter} {self.current_check_point}'
+    #     print(status)
+    #     return status
 
     def _save_to_file(self, data):
         try:

@@ -1,4 +1,4 @@
-# import json
+import json
 
 class Characters:
     def __init__(self, data) -> None:
@@ -8,6 +8,12 @@ class Characters:
         self.background = data['background']
         self.personality = data['personality']
         self.unique_skills = []
+
+    def load_characters(self):
+        with open('json_files/characters.json', 'r') as file:
+            load_char_file = json.load(file)
+        characters = {char: Characters(bio) for char, bio in load_char_file.items()}
+        return characters
 
     # def load_characters(self):
     #     try:

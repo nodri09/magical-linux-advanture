@@ -2,19 +2,18 @@
   "level 1": {
     "chapter 1": {
       "checkpoint 1": [
-        "{Linus}[Linus]:...{pause:1} Hello?.. {pause:2}",
-        "{Linus}[Linus]:Is anyone there? {pause:2}",
-        "{Linus}[Linus]:Can you hear me?",
-        "{input}",
+        "> ...{pause:1} Hello?.. {pause:2}",
+        "> Is anyone there? {pause:2}",
+        "> Can you hear me?",
         "{save}"
       ],
       "checkpoint 2": [
-        "{Linus}[Linus]:Ah, finally! I can't believe this... The ritual worked! {pause:1}",
-        "{Linus}[Linus]:My name is Linus and I'm Lib...",
-        "{Story}Linus is interrupted by the footsteps coming from afar...{pause:0.5}",
-        "{Linus}[Linus]:Shhhhh... {pause:1}",
-        "{Linus}[Linus]:I think someone is coming... We need to get out of here{pause:0.5}",
-        "{Linus}[Linus]:But I need your help",
+        "> Ah, finally! I can't believe this... The ritual worked! {pause:1}",
+        "> My name is Linus and I'm Lib...",
+        "> Linus is interrupted by the footsteps coming from afar...{pause:0.5}",
+        "> Shhhhh... {pause:1}",
+        "> I think someone is coming... We need to get out of here{pause:0.5}",
+        "> But I need your help",
         "{save}"
       ]
     }
