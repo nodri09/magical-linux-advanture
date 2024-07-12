@@ -25,6 +25,6 @@ while game_status:
         break
     elif player_input.lower() == 'yes':
         if player_status[0] == 1:
-            level_one(player_status)
+            game_status = level_one(game_status=game_status, player=player)
     else:
         print_tf(player_input)

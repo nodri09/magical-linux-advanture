@@ -63,11 +63,6 @@ class Player:
 
         self._save_to_file(player_data)
 
-    # def status(self):
-    #     status = f'{self.current_level} {self.current_chapter} {self.current_check_point}'
-    #     print(status)
-    #     return status
-
     def _save_to_file(self, data):
         try:
             with open('json_files/player_data.json', 'w') as file:

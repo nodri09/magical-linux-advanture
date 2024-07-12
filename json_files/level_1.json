@@ -1,21 +1,31 @@
 {
-    "level 1": {
-      "chapter 1": {
-        "checkpoint 1": [
-          "> ...{pause:1} Hello?.. {pause:2}",
-          "> Is anyone there? {pause:2}",
-          "> Can you hear me?",
-          "{save}"
-        ],
-        "checkpoint 2": [
-          "> Ah, finally! I can't believe this... The ritual worked! {pause:1}",
-          "> My name is Linus and I'm Lib...",
-          "> Linus is interrupted by the footsteps coming from afar...{pause:0.5}",
-          "> Shhhhh... {pause:1}",
-          "> I think someone is coming... We need to get out of here{pause:0.5}",
-          "> But I need your help",
-          "{save}"
-        ]
-      }
+  "level 1": {
+    "chapter 1": {
+      "checkpoint 1": [
+        "[green3]> {pause:1} ...{pause:1} Hello?..{pause:2}[/green3]",
+        "[green3]> Is anyone there? {pause:2}[/green3]",
+        "[green3]> Can you hear me?[/green3]"
+      ],
+      "checkpoint 2": [
+        "> {pause:1}Ah, finally! I can't believe this... {pause:1} The ritual worked! {pause:1}",
+        "> My name is Lenny and I'm Lib{pause:1}...",
+        "> (Lenny is interrupted by the footsteps coming from afar...){pause:1}",
+        "> Shhhhh... {pause:1}",
+        "> I think someone is coming... We need to get out of here{pause:1}",
+        "> But I need your help.{pause:1} We're trapped in Kornel the Conqueror's castle, deep within the /root directory.",
+        "> I've spent all my magical powers for the summoning spell.",
+        "> You'll have to get us out of here and quick... {pause:1}",
+        "> Are you ready for the task?"
+      ],
+      "checkpoint 3": [
+        "> For now you can repeat after me. I'm going to tell you simple spells and I'll explain it later what do they mean.{pause:1}",
+        "> {pause:1}Quickly, we need to move!{pause:1}",
+        "> Type `cd /home` to get us to a safer place."
+      ],
+      "checkpoint 4": [
+        "> {pause:1}Good job! We made it to the /home directory. We should be safe here for a while.",
+        "> Let's catch our breath and I'll explain more about what's going on."
+      ]
     }
+  }
 }
