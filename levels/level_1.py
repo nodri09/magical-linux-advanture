@@ -1,14 +1,15 @@
 import json
-from functions import print_tf
+from functions import load_level_text, text_style, typewritter
 
-def level_one(game_status, player):
+
+def level_one(game_status, player, character):
     player_input = ''
     while game_status:
-        with open('json_files/level_1.json', 'r') as file:
-            texts = json.load(file)
+        level_1_text = load_level_text(1)
 
         # Checkpoint 1
-        print_tf(texts[f'level {player.current_level}'][f'chapter {player.current_chapter}'][f'checkpoint {player.current_check_point}'])
+        # texts.typewritter(flag='level')
+        typewritter(level_1_text[f'level {player.current_level}'][f'chapter {player.current_chapter}'][f'checkpoint {player.current_check_point}'], flag='level')
         player.current_check_point += 1
         player.update_player({'current_check_point':player.current_check_point})
 
@@ -16,22 +17,23 @@ def level_one(game_status, player):
 
         while player_input != 'exit':
             # Checkpoint 2
-            print_tf(texts[f'level {player.current_level}'][f'chapter {player.current_chapter}'][f'checkpoint {player.current_check_point}'])
+            typewritter(level_1_text[f'level {player.current_level}'][f'chapter {player.current_chapter}'][f'checkpoint {player.current_check_point}'], flag='level')
             player.current_check_point += 1
             player.update_player({'current_check_point':player.current_check_point})
             player_input = input('> ').lower()
 
             # Checkpoint 3
-            print_tf(texts[f'level {player.current_level}'][f'chapter {player.current_chapter}'][f'checkpoint {player.current_check_point}'])
+            typewritter(level_1_text[f'level {player.current_level}'][f'chapter {player.current_chapter}'][f'checkpoint {player.current_check_point}'], flag='level')
             player.current_check_point += 1
             player.update_player({'current_check_point':player.current_check_point})
             player_input = input('> ').lower()
             while player_input != 'cd /home':
-                print_tf(f'Make sure to type: cd /home')
+                typewritter(f'Make sure to type: cd /home')
+                player_input = input('> ').lower()
             
             break
         else:
-            print_tf('Exiting the game')
+            typewritter('Exiting the game')
             game_status = False
             break
             

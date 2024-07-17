@@ -1,4 +1,8 @@
 import json
+import time
+import re
+import sys
+from rich.console import Console
 
 class Player:
     def __init__(self) -> None:
@@ -82,3 +86,68 @@ class Player:
         self.mp = data.get('mp', self.mp)
         self.name = data.get('name', self.name)
         self.mastered_spells = data.get('mastered_spells', self.mastered_spells)
+
+
+class Characters:
+    def __init__(self, data) -> None:
+        self.name = data['name']
+        self.role = data['role']
+        self.appearance = data['appearance']
+        self.background = data['background']
+        self.personality = data['personality']
+        self.unique_skills = []
+
+    def load_characters(self):
+        with open('json_files/characters.json', 'r') as file:
+            load_char_file = json.load(file)
+        characters = {char: Characters(bio) for char, bio in load_char_file.items()}
+        return characters
+
+
+
+class Texts():
+    def __init__(self) -> None:
+        self.console = Console()
+
+    def load_level_text(self, level):
+        level_path = f'json_files/level_{level}.json'
+
+        with open(level_path, 'r') as file:
+            level_text = json.load(file)
+
+        return level_text
+    
+    def text_style(self, tag):
+
+        if 'Lenny' in tag :
+            style = "bold green3"
+        elif 'Story' in tag:
+            style = "italic grey50"
+        
+        return style
+        
+    def typewritter(self, text, flag='',delay=0.05):
+        try:
+            if flag == 'level':
+                for line, values in text.items():
+                    
+                    typing_index = 0
+                    while typing_index < len(values):
+                        match_pause = re.match(r'\{pause:(\d+(\.\d+)?)\}', values[typing_index:])
+                        if match_pause:
+                            pause_duration = float(match_pause.group(1))
+                            time.sleep(pause_duration)
+                            typing_index += match_pause.end()
+                        else:
+                            self.console.print(values[typing_index], end='', style=self.text_style(line))
+                            sys.stdout.flush()
+                            time.sleep(delay)
+                            typing_index += 1
+                return True
+            else:
+                for char in text:
+                    sys.stdout.write(char)
+                    sys.stdout.flush()
+                    time.sleep(delay)
+        except Exception as e:
+            print(f'Error occured while trying typewritter effect: {e}')

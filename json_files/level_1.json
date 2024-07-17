@@ -1,30 +1,28 @@
 {
   "level 1": {
     "chapter 1": {
-      "checkpoint 1": [
-        "[green3]> {pause:1} ...{pause:1} Hello?..{pause:2}[/green3]",
-        "[green3]> Is anyone there? {pause:2}[/green3]",
-        "[green3]> Can you hear me?[/green3]"
-      ],
-      "checkpoint 2": [
-        "> {pause:1}Ah, finally! I can't believe this... {pause:1} The ritual worked! {pause:1}",
-        "> My name is Lenny and I'm Lib{pause:1}...",
-        "> (Lenny is interrupted by the footsteps coming from afar...){pause:1}",
-        "> Shhhhh... {pause:1}",
-        "> I think someone is coming... We need to get out of here{pause:1}",
-        "> But I need your help.{pause:1} We're trapped in Kornel the Conqueror's castle, deep within the /root directory.",
-        "> I've spent all my magical powers for the summoning spell.",
-        "> You'll have to get us out of here and quick... {pause:1}",
-        "> Are you ready for the task?"
-      ],
-      "checkpoint 3": [
-        "> For now you can repeat after me. I'm going to tell you simple spells and I'll explain it later what do they mean.{pause:1}",
-        "> {pause:1}Quickly, we need to move!{pause:1}",
-        "> Type `cd /home` to get us to a safer place."
-      ],
+      "checkpoint 1": {
+        "Lenny": ">{pause:1} ...{pause:1} Hello?..{pause:2}\n> Is anyone there? {pause:2}\n> Can you hear me?"
+      },
+      "checkpoint 2": {
+        "Lenny": "> {pause:1}Ah, finally! I can't believe this... {pause:1} The ritual worked! {pause:1}\n",
+        "Lenny1": "> My name is Lenny and I'm Lib...{pause:1}\n",
+        "Story":  "> (Lenny is interrupted by the footsteps coming from afar...){pause:1}\n",
+        "Lenny2": "> Shhhhh... {pause:1}\n",
+        "Lenny3": "> I think someone is coming... We need to get out of here{pause:1}\n",
+        "Lenny4": "> But I need your help.{pause:1} We're trapped in Kornel the Conqueror's castle, deep within the /root directory.\n",
+        "Lenny5": "> I've spent all my magical powers for the summoning spell.\n",
+        "Lenny6": "> You'll have to get us out of here and quick... {pause:1}\n",
+        "Lenny7": "> Are you ready for the task?\n"
+    },
+      "checkpoint 3": {
+        "Lenny":"> For now you can repeat after me. I'm going to tell you simple spells and I'll explain it later what do they mean.{pause:1}\n",
+        "Lenny1":"> {pause:1}Quickly, we need to move!{pause:1}\n",
+        "Lenny2":"> Type `cd /home` to get us to a safer place.\n"
+        },
       "checkpoint 4": [
-        "> {pause:1}Good job! We made it to the /home directory. We should be safe here for a while.",
-        "> Let's catch our breath and I'll explain more about what's going on."
+        "> {pause:1}Good job! We made it to the /home directory. We should be safe here for a while.\n",
+        "> Let's catch our breath and I'll explain more about what's going on.\n"
       ]
     }
   }
