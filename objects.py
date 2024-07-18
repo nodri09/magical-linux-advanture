@@ -6,9 +6,10 @@ from rich.console import Console
 
 class Player:
     def __init__(self) -> None:
-        self.current_level = 1
-        self.current_chapter = 1
-        self.current_check_point = 1
+        player_data = self.load_player()
+        self.current_level = player_data['current_level']
+        self.current_chapter = player_data['current_chapter']
+        self.current_checkpoint = player_data['current_checkpoint']
 
         self.completed_levels = []
         self.completed_chapters = []
@@ -34,10 +35,10 @@ class Player:
         player_data = {
             "current_level": self.current_level,
             "current_chapter": self.current_chapter,
-            "current_check_point": self.current_check_point,
+            "current_checkpoint": self.current_checkpoint,
             "completed_levels": self.completed_levels,
             "completed_chapters": self.completed_chapters,
-            "completed_check_points": self.completed_check_points,
+            "completed_checkpoints": self.completed_checkpoints,
             "hp": self.hp,
             "mp": self.mp,
             "name": self.name,
@@ -49,7 +50,7 @@ class Player:
         player_data = {
             "current_level": self.current_level,
             "current_chapter": self.current_chapter,
-            "current_check_point": self.current_check_point,
+            "current_checkpoint": self.current_checkpoint,
             "completed_levels": self.completed_levels,
             "completed_chapters": self.completed_chapters,
             "completed_check_points": self.completed_check_points,
@@ -74,18 +75,18 @@ class Player:
             print(f"Error saving player data: {e}")
 
     def _load_from_dict(self, data):
-        self.current_level = data.get('current_level', self.current_level)
-        self.current_chapter = data.get('current_chapter', self.current_chapter)
-        self.current_check_point = data.get('current_check_point', self.current_check_point)
+        self.current_level = data.get('current_level', None)
+        self.current_chapter = data.get('current_chapter', None)
+        self.current_checkpoint = data.get('current_checkpoint', None)
 
-        self.completed_levels = data.get('completed_levels', self.completed_levels)
-        self.completed_chapters = data.get('completed_chapters', self.completed_chapters)
-        self.completed_check_points = data.get('completed_check_points', self.completed_check_points)
+        self.completed_levels = data.get('completed_levels', None)
+        self.completed_chapters = data.get('completed_chapters', None)
+        self.completed_check_points = data.get('completed_check_points', None)
 
-        self.hp = data.get('hp', self.hp)
-        self.mp = data.get('mp', self.mp)
-        self.name = data.get('name', self.name)
-        self.mastered_spells = data.get('mastered_spells', self.mastered_spells)
+        self.hp = data.get('hp', None)
+        self.mp = data.get('mp', None)
+        self.name = data.get('name', None)
+        self.mastered_spells = data.get('mastered_spells', None)
 
 
 class Characters:

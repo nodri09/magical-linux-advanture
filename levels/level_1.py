@@ -9,29 +9,35 @@ def level_one(game_status, player, character):
 
         # Checkpoint 1
         # texts.typewritter(flag='level')
-        typewritter(level_1_text[f'level {player.current_level}'][f'chapter {player.current_chapter}'][f'checkpoint {player.current_check_point}'], flag='level')
-        player.current_check_point += 1
-        player.update_player({'current_check_point':player.current_check_point})
+        typewritter(level_1_text[f'level {player.current_level}'][f'chapter {player.current_chapter}'][f'checkpoint {player.current_checkpoint}'], flag='level')
+        player.current_checkpoint += 1
+        player.update_player({'current_checkpoint':player.current_checkpoint})
 
         player_input = input('> ').lower()
 
         while player_input != 'exit':
             # Checkpoint 2
-            typewritter(level_1_text[f'level {player.current_level}'][f'chapter {player.current_chapter}'][f'checkpoint {player.current_check_point}'], flag='level')
-            player.current_check_point += 1
-            player.update_player({'current_check_point':player.current_check_point})
+            typewritter(level_1_text[f'level {player.current_level}'][f'chapter {player.current_chapter}'][f'checkpoint {player.current_checkpoint}'], flag='level')
+            player.current_checkpoint += 1
+            player.update_player({'current_checkpoint':player.current_checkpoint})
             player_input = input('> ').lower()
 
             # Checkpoint 3
-            typewritter(level_1_text[f'level {player.current_level}'][f'chapter {player.current_chapter}'][f'checkpoint {player.current_check_point}'], flag='level')
-            player.current_check_point += 1
-            player.update_player({'current_check_point':player.current_check_point})
+            typewritter(level_1_text[f'level {player.current_level}'][f'chapter {player.current_chapter}'][f'checkpoint {player.current_checkpoint}'], flag='level')
+            print(player.current_level, player.current_chapter, player.current_checkpoint)
+
             player_input = input('> ').lower()
             while player_input != 'cd /home':
                 typewritter(f'Make sure to type: cd /home')
+                print()
                 player_input = input('> ').lower()
-            
-            break
+            player.current_checkpoint += 1
+            player.update_player({'current_checkpoint':player.current_checkpoint})
+
+            # Checkpoint 4
+            typewritter(level_1_text[f'level {player.current_level}'][f'chapter {player.current_chapter}'][f'checkpoint {player.current_checkpoint}'], flag='level')
+            player.current_checkpoint += 1
+            player.update_player({'current_checkpoint':player.current_checkpoint})
         else:
             typewritter('Exiting the game')
             game_status = False
@@ -45,4 +51,4 @@ def level_one(game_status, player, character):
 
 
     ###### TODO 
-    ### Create close game function. It should take player_status (level, chapter, checkpoint) as input, update player.json file and close the game.
+    ### While loop to check if player typed correct command isn't working for some reason. In addition, on each iteration of the player's command check it updates current_chapter. Check why.
