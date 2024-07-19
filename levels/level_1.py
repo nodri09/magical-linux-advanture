@@ -1,5 +1,5 @@
 import json
-from functions import load_level_text, text_style, typewritter
+from functions import load_level_text, typewritter, check_exit
 
 
 def level_one(game_status, player, character):
@@ -13,9 +13,14 @@ def level_one(game_status, player, character):
         player.current_checkpoint += 1
         player.update_player({'current_checkpoint':player.current_checkpoint})
 
-        player_input = input('> ').lower()
+        player_input = check_exit(input('> ').lower())
+        if player_input == False:
+            game_status = False
+        else:
+            continue
 
-        while player_input != 'exit':
+        while game_status:
+        # player_input != 'exit':
             # Checkpoint 2
             typewritter(level_1_text[f'level {player.current_level}'][f'chapter {player.current_chapter}'][f'checkpoint {player.current_checkpoint}'], flag='level')
             player.current_checkpoint += 1
@@ -46,9 +51,3 @@ def level_one(game_status, player, character):
         break
       
     return game_status
-
-
-
-
-    ###### TODO 
-    ### While loop to check if player typed correct command isn't working for some reason. In addition, on each iteration of the player's command check it updates current_chapter. Check why.

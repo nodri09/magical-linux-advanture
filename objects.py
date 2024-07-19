@@ -1,9 +1,33 @@
 import json
-import time
-import re
-import sys
-from rich.console import Console
+from functions import check_exit
+# import time
+# import re
+# import sys
+# from rich.console import Console
 
+
+####### TODO
+### Work on game_flow object. Decide what methods should it have and what parameters. 
+
+### GAME_FLOW ###
+class GameFlow:
+    def __init__(self) -> None:
+        game_status = True
+        player = Player()
+        character = Characters()
+
+    def check_exit(self, input):
+        if input.lower() == 'exit':
+            return False
+        else:
+            return input
+
+    def player_input(self):
+        player_input = self.check_exit(input('> '))
+        return player_input
+
+
+### PLAYER ###
 class Player:
     def __init__(self) -> None:
         player_data = self.load_player()
@@ -106,49 +130,49 @@ class Characters:
 
 
 
-class Texts():
-    def __init__(self) -> None:
-        self.console = Console()
+# class Texts():
+#     def __init__(self) -> None:
+#         self.console = Console()
 
-    def load_level_text(self, level):
-        level_path = f'json_files/level_{level}.json'
+#     def load_level_text(self, level):
+#         level_path = f'json_files/level_{level}.json'
 
-        with open(level_path, 'r') as file:
-            level_text = json.load(file)
+#         with open(level_path, 'r') as file:
+#             level_text = json.load(file)
 
-        return level_text
+#         return level_text
     
-    def text_style(self, tag):
+#     def text_style(self, tag):
 
-        if 'Lenny' in tag :
-            style = "bold green3"
-        elif 'Story' in tag:
-            style = "italic grey50"
+#         if 'Lenny' in tag :
+#             style = "bold green3"
+#         elif 'Story' in tag:
+#             style = "italic grey50"
         
-        return style
+#         return style
         
-    def typewritter(self, text, flag='',delay=0.05):
-        try:
-            if flag == 'level':
-                for line, values in text.items():
+#     def typewritter(self, text, flag='',delay=0.05):
+#         try:
+#             if flag == 'level':
+#                 for line, values in text.items():
                     
-                    typing_index = 0
-                    while typing_index < len(values):
-                        match_pause = re.match(r'\{pause:(\d+(\.\d+)?)\}', values[typing_index:])
-                        if match_pause:
-                            pause_duration = float(match_pause.group(1))
-                            time.sleep(pause_duration)
-                            typing_index += match_pause.end()
-                        else:
-                            self.console.print(values[typing_index], end='', style=self.text_style(line))
-                            sys.stdout.flush()
-                            time.sleep(delay)
-                            typing_index += 1
-                return True
-            else:
-                for char in text:
-                    sys.stdout.write(char)
-                    sys.stdout.flush()
-                    time.sleep(delay)
-        except Exception as e:
-            print(f'Error occured while trying typewritter effect: {e}')
+#                     typing_index = 0
+#                     while typing_index < len(values):
+#                         match_pause = re.match(r'\{pause:(\d+(\.\d+)?)\}', values[typing_index:])
+#                         if match_pause:
+#                             pause_duration = float(match_pause.group(1))
+#                             time.sleep(pause_duration)
+#                             typing_index += match_pause.end()
+#                         else:
+#                             self.console.print(values[typing_index], end='', style=self.text_style(line))
+#                             sys.stdout.flush()
+#                             time.sleep(delay)
+#                             typing_index += 1
+#                 return True
+#             else:
+#                 for char in text:
+#                     sys.stdout.write(char)
+#                     sys.stdout.flush()
+#                     time.sleep(delay)
+#         except Exception as e:
+#             print(f'Error occured while trying typewritter effect: {e}')

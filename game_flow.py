@@ -1,6 +1,6 @@
 from objects import Player, Characters
 from levels.level_1 import level_one
-from functions import load_level_text, text_style, typewritter
+from functions import typewritter
 
 player = Player()
 # player = player.load_player()

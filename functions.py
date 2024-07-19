@@ -50,6 +50,27 @@ def typewritter(text, flag='',delay=0.05):
         print(f'Error occured while trying typewritter effect: {e}')
 
 
+def check_exit(input):
+    if input.lower() == 'exit':
+        return False
+    else:
+        return input
+
+def game_status(player_input):
+    if player_input == False:
+        return False
+    else:
+        return player_input
+
+
+def player_input():
+    player_input = game_status(check_exit(input('> ')))
+    return player_input
+
+
+player_input()
+
+
 # something = texts.typewritter(f"Should we start the game?")
 # if something == True:
 #     print('something was true')
