@@ -2,7 +2,7 @@ import json
 from functions import load_level_text, typewritter, check_exit
 
 
-def level_one(game_status, player, character):
+def level_one(game_status, player):
     player_input = ''
     while game_status:
         level_1_text = load_level_text(1)

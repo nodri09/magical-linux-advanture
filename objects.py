@@ -1,32 +1,11 @@
 import json
-from functions import check_exit
+from functions import typewritter
+from levels.level_1 import level_one
+import time
 # import time
 # import re
-# import sys
+
 # from rich.console import Console
-
-
-####### TODO
-### Work on game_flow object. Decide what methods should it have and what parameters. 
-
-### GAME_FLOW ###
-class GameFlow:
-    def __init__(self) -> None:
-        game_status = True
-        player = Player()
-        character = Characters()
-        game_state = {"level": player.current_level, "chapter": player.current_chapter, "checkpoint": player.current_checkpoint}
-
-    def check_input(self, input):
-        if input.lower() == 'exit':
-            return False
-        elif game_state == # TODO
-        else:
-            return True, input
-
-    def player_input(self):
-        player_input = self.check_input(input('> '))
-        return player_input
 
 
 ### PLAYER ###
@@ -115,6 +94,7 @@ class Player:
         self.mastered_spells = data.get('mastered_spells', None)
 
 
+### CHARACTERS
 class Characters:
     def __init__(self, data) -> None:
         self.name = data['name']
@@ -129,6 +109,60 @@ class Characters:
             load_char_file = json.load(file)
         characters = {char: Characters(bio) for char, bio in load_char_file.items()}
         return characters
+
+
+
+
+
+####### TODO
+### Work on game_flow object. Decide what methods should it have and what parameters. 
+
+### GAME_FLOW ###
+class GameFlow:
+    def __init__(self) -> None:
+        self.game_status = True
+        self.player = Player()
+        # character = Characters()
+        self.game_state = {"level": self.player.current_level, "chapter": self.player.current_chapter, "checkpoint": self.player.current_checkpoint}
+
+    def check_input(self, input):
+        input = input.lower()
+        if input.lower() == 'exit':
+            typewritter('Exiting the game. \n')
+            self.game_status = False
+            return self.game_status
+        elif self.game_state == {"level": 0, "chapter": 0, "checkpoint": 0}:
+            if input not in ['yes', 'y', 'exit']:
+                typewritter("Please type either 'Yes' or 'y' to continue or 'Exit' to exit the game. \n")
+                self.player_input()
+
+            if input in ['yes', 'y']:
+                typewritter('Starting the game... \n')
+                self.player.current_level += 1
+                self.player.current_chapter += 1
+                self.player.current_checkpoint += 1
+                self.player.update_player({"current_level": self.player.current_level, "current_chapter": self.player.current_chapter, "current_checkpoint": self.player.current_checkpoint})
+                return self.game_status
+            elif input == 'exit':
+                self.game_status = False
+                return self.game_status
+        else:
+            return True, input
+
+    def player_input(self):
+        player_input = self.check_input(input('> '))
+        return player_input
+    
+    def game_flow(self):
+        while self.game_status:
+            print('Should we start the game?')
+            self.player_input()
+            time.sleep(2)
+            level_one(self.game_status, self.player)
+
+### TEST GAMEFLOW
+game = GameFlow()
+game.game_flow()
 
 
 

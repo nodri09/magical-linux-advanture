@@ -67,10 +67,6 @@ def player_input():
     player_input = game_status(check_exit(input('> ')))
     return player_input
 
-
-player_input()
-
-
 # something = texts.typewritter(f"Should we start the game?")
 # if something == True:
 #     print('something was true')
