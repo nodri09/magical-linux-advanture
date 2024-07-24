@@ -115,7 +115,8 @@ class Characters:
 
 
 ####### TODO
-### Work on game_flow object. Decide what methods should it have and what parameters. 
+### Modify level_1 stage to incorporate it into new design of game_flow.
+### Add new checkers in check_input for the other checkpoints in the level_1.
 
 ### GAME_FLOW ###
 class GameFlow:
