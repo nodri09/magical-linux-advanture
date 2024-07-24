@@ -15,15 +15,17 @@ class GameFlow:
         game_status = True
         player = Player()
         character = Characters()
+        game_state = {"level": player.current_level, "chapter": player.current_chapter, "checkpoint": player.current_checkpoint}
 
-    def check_exit(self, input):
+    def check_input(self, input):
         if input.lower() == 'exit':
             return False
+        elif game_state == # TODO
         else:
-            return input
+            return True, input
 
     def player_input(self):
-        player_input = self.check_exit(input('> '))
+        player_input = self.check_input(input('> '))
         return player_input
 
 

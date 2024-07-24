@@ -23,7 +23,11 @@ while game_status:
         game_status = False
         break
     elif player_input.lower() in ['yes', 'y']:
-        if player.current_level == 1:
+        if player.current_level == 0:
+            player.current_level += 1
+            player.current_chapter += 1
+            player.current_checkpoint += 1
+            player.update_player({"current_level": player.current_level, "current_chapter": player.current_chapter, "current_checkpoint": player.current_checkpoint})
             game_status = level_one(game_status=game_status, player=player, character=characters)
     else:
         typewritter(player_input)
