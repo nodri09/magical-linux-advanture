@@ -112,6 +112,11 @@ class Characters:
 
 
 ####### TODO
+#modify Player, GameFlow, Level classes to work with each other better. 
+# Work on player.state reload options. 
+# Create save() function to save data before exiting. 
+
+
 ### GAME_FLOW ###
 class GameFlow:
     def __init__(self, state) -> None:
