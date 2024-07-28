@@ -11,14 +11,15 @@ import time
 ### PLAYER ###
 class Player:
     def __init__(self) -> None:
-        player_data = self.load_player()
-        self.current_level = player_data['current_level']
-        self.current_chapter = player_data['current_chapter']
-        self.current_checkpoint = player_data['current_checkpoint']
+        self.player_data = self.load_player()
+        self.current_level = self.player_data['current_level']
+        self.current_chapter = self.player_data['current_chapter']
+        self.current_checkpoint = self.player_data['current_checkpoint']
+        self.state = [self.current_level, self.current_chapter, self.current_checkpoint]
 
         self.completed_levels = []
         self.completed_chapters = []
-        self.completed_check_points = []
+        self.completed_checkpoints = []
 
         self.hp = 100
         self.mp = 0
@@ -51,26 +52,24 @@ class Player:
         }
         self._save_to_file(player_data)
     
-    def update_player(self, data):
-        player_data = {
-            "current_level": self.current_level,
-            "current_chapter": self.current_chapter,
-            "current_checkpoint": self.current_checkpoint,
-            "completed_levels": self.completed_levels,
-            "completed_chapters": self.completed_chapters,
-            "completed_check_points": self.completed_check_points,
-            "hp": self.hp,
-            "mp": self.mp,
-            "name": self.name,
-            "mastered_spells": self.mastered_spells
-        }
+    def update_player(self, what=''):
 
-        for k,v in player_data.items():
-            for i,j in data.items():
-                if k == i:
-                    player_data.update({k:j})
+        if what == '+lvl':
+            self.player_data['current_level'] += 1
+        elif what == '-lvl':
+            self.player_data['current_level'] -= 1
+        elif what == '+chp':
+            self.player_data['current_chapter'] += 1
+        elif what == '-chp':
+            self.player_data['current_chapter'] -= 1
+        elif what == '+chck':
+            self.player_data['current_checkpoint'] += 1
+        elif what == '-chck':
+            self.player_data['current_checkpoint'] += 1
 
-        self._save_to_file(player_data)
+        self._save_to_file(self.player_data)
+        self.load_player()
+        self.state
 
     def _save_to_file(self, data):
         try:
@@ -112,58 +111,77 @@ class Characters:
 
 
 
-
-
 ####### TODO
-### Modify level_1 stage to incorporate it into new design of game_flow.
-### Add new checkers in check_input for the other checkpoints in the level_1.
-
 ### GAME_FLOW ###
 class GameFlow:
-    def __init__(self) -> None:
-        self.game_status = True
-        self.player = Player()
+    def __init__(self, state) -> None:
+        self.window_status = True
+        # self.player = player_obj
         # character = Characters()
-        self.game_state = {"level": self.player.current_level, "chapter": self.player.current_chapter, "checkpoint": self.player.current_checkpoint}
+        self.player_state = state
 
-    def check_input(self, input):
-        input = input.lower()
-        if input.lower() == 'exit':
-            typewritter('Exiting the game. \n')
-            self.game_status = False
-            return self.game_status
-        elif self.game_state == {"level": 0, "chapter": 0, "checkpoint": 0}:
-            if input not in ['yes', 'y', 'exit']:
-                typewritter("Please type either 'Yes' or 'y' to continue or 'Exit' to exit the game. \n")
-                self.player_input()
+    def check_input(self, p_input, flag=str):
+        p_input = p_input.lower()
+        chck = [int(digit) for digit in flag.split('-')]
 
-            if input in ['yes', 'y']:
-                typewritter('Starting the game... \n')
-                self.player.current_level += 1
-                self.player.current_chapter += 1
-                self.player.current_checkpoint += 1
-                self.player.update_player({"current_level": self.player.current_level, "current_chapter": self.player.current_chapter, "current_checkpoint": self.player.current_checkpoint})
-                return self.game_status
-            elif input == 'exit':
-                self.game_status = False
-                return self.game_status
-        else:
-            return True, input
+        if p_input.lower() == 'exit':
+            self.window_status = False
+            return self.window_status
+        
+        elif self.player_state == chck:
 
-    def player_input(self):
-        player_input = self.check_input(input('> '))
+            while p_input not in ['yes', 'y', 'exit']:
+                typewritter("Please type either 'Yes' to continue or 'Exit' to exit the game. \n")
+                p_input = input('> ').lower()
+
+            if p_input in ['yes', 'y']:
+                self.window_status = True
+                checker = 'correct'
+                return self.window_status, checker
+            elif p_input == 'exit':
+                self.window_status = False
+                return self.window_status
+
+    def player_input(self, at=str):
+        player_input = self.check_input(input('> '), flag=at)
         return player_input
-    
-    def game_flow(self):
-        while self.game_status:
-            print('Should we start the game?')
-            self.player_input()
-            time.sleep(2)
-            level_one(self.game_status, self.player)
+
+
+class Level():
+    def __init__(self, player_obj, level_digit, input_validator):
+        self.player = player_obj
+        self.check = input_validator
+        self.text = self.load_level_text(level_digit)
+
+    def load_level_text(self, level):
+        level_path = f'json_files/level_{level}.json'
+
+        with open(level_path, 'r') as file:
+            level_text = json.load(file)
+
+        return level_text
 
 ### TEST GAMEFLOW
-game = GameFlow()
-game.game_flow()
+def game_flow():
+    player = Player()
+    game = GameFlow(player.state)
+    while game.window_status:
+        print("Would you like to start the game? (type 'Yes' to continue or 'Exit' to exit the game)\n")
+        game.window_status = game.player_input(at='0-0-0')
+        if game.window_status == False:
+            continue
+        print("Starting the game.")
+        player.update_player(what='+lvl')
+        player.update_player(what='+chp')
+        player.update_player(what='+chck')
+
+        from levels.level_1 import level_one
+        level_one(Level(player_obj=player, level_digit=1, input_validator=game.check_input))
+
+    else:
+        print("Exiting the game.")
+
+game_flow()
 
 
 
