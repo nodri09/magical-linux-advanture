@@ -1,4 +1,4 @@
-from functions import typewritter, check_exit, load_level_text
+from functions import typewritter
 
 def level_one(level):
     while level.game_flow.window_status:
