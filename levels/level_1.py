@@ -1,9 +1,28 @@
 from functions import typewritter, check_exit, load_level_text
 
 def level_one(level):
-    typewritter(level.text[f'level {level.player.state[0]}'][f'chapter {level.player.state[1]}'][f'checkpoint {level.player.state[2]}'], flag='level')
+    while level.game_flow.window_status:
+        typewritter(level.text[f"level {level.player.state['current_level']}"][f"chapter {level.player.state['current_chapter']}"][f"checkpoint {level.player.state['current_checkpoint']}"], flag='level')
+        level.player.update_player_state(what='+chck')        
+        if level.game_flow.player_input() == False:
+            break
 
-    level.player.update_player(what='+chck')
+        typewritter(level.text[f"level {level.player.state['current_level']}"][f"chapter {level.player.state['current_chapter']}"][f"checkpoint {level.player.state['current_checkpoint']}"], flag='level')
+        level.player.update_player_state(what='+chck')
+        if level.game_flow.player_input() == False:
+            break
+        
+        typewritter(level.text[f"level {level.player.state['current_level']}"][f"chapter {level.player.state['current_chapter']}"][f"checkpoint {level.player.state['current_checkpoint']}"], flag='level')
+        level.player.update_player_state(what='+chck')
+        if level.game_flow.player_input() == False:
+            break
+
+        typewritter(level.text[f"level {level.player.state['current_level']}"][f"chapter {level.player.state['current_chapter']}"][f"checkpoint {level.player.state['current_checkpoint']}"], flag='level')
+        level.player.update_player_state(what='+chck')
+        if level.game_flow.player_input() == False:
+            break
+    else:
+        return False
 
 # def level_one(game_status, player):
 #     player_input = ''

@@ -5,20 +5,21 @@
         "Lenny": ">{pause:1} ...{pause:1} Hello?..{pause:2}\n> Is anyone there? {pause:2}\n> Can you hear me?"
       },
       "checkpoint 2": {
-        "Lenny": "> {pause:1}Ah, finally! I can't believe this... {pause:1} The ritual worked! {pause:1}\n",
+        "Lenny": "> {pause:1}Ah, finally! I can't believe this... {pause:1}The ritual worked! {pause:1}\n",
         "Lenny1": "> My name is Lenny and I'm Lib...{pause:1}\n",
         "Story":  "> (Lenny is interrupted by the footsteps coming from afar...){pause:1}\n",
         "Lenny2": "> Shhhhh... {pause:1}\n",
-        "Lenny3": "> I think someone is coming... We need to get out of here{pause:1}\n",
+        "Lenny3": "> I think someone is coming... We need to get out of here.{pause:1}\n",
         "Lenny4": "> But I need your help.{pause:1} We're trapped in Kornel the Conqueror's castle, deep within the /root directory.\n",
         "Lenny5": "> I've spent all my magical powers for the summoning spell.\n",
         "Lenny6": "> You'll have to get us out of here and quick... {pause:1}\n",
         "Lenny7": "> Are you ready for the task?\n"
     },
       "checkpoint 3": {
-        "Lenny":"> For now you can repeat after me. I'm going to tell you simple spells and I'll explain it later what do they mean.{pause:1}\n",
-        "Lenny1":"> {pause:1}Quickly, we need to move!{pause:1}\n",
-        "Lenny2":"> Type `cd /home` to get us to a safer place.\n"
+        "Lenny":"> Its super easy. For now you can repeat after me.\n",
+        "Lenny1":"> I'm going to tell you simple spells and I'll explain it later what do they mean.{pause:1}\n",
+        "Lenny2":"> {pause:1}Quickly, we need to move!{pause:1}\n",
+        "Lenny3":"> Type `cd /home` to get us to a safer place.\n"
         },
       "checkpoint 4": [
         "> {pause:1}Good job! We made it to the /home directory. We should be safe here for a while.\n",
